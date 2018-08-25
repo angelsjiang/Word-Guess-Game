@@ -27,6 +27,7 @@ function hangmanGame(word) {
     var chancesLeft = 9;
     document.getElementById("guesses-left").innerHTML = chancesLeft;
     document.getElementById("initiateGame").innerHTML = "Begin!";
+    var youWin = false;
     
     // setting the value of correct answer, updating guessing section
     for(var i = 0; i < word.length; i++) {
@@ -57,22 +58,30 @@ function hangmanGame(word) {
             }
         }
         if (match) {
-            console.log(chancesLeft);
-            if (chancesLeft > 0) {
-                chancesLeft = chancesLeft - 1;
-                document.getElementById("guesses-left").innerHTML = chancesLeft;
-                // console.log(wrongGuesses);
-                document.getElementById("wrong-guesses").innerHTML = wrongGuesses.join(" ");
-            }
-            else {
-                // gameCanBegin = false;
-                document.getElementById("initiateGame").innerHTML = "YOU LOSE!";
-                lossesCounter();
-                if (confirm("Do you want to play again?")) {
-                    prompt("It passed.");
+
+            if(checkIfComplete(currGuess,currCorrAns)) {
+                
+                document.onkeyup = function(key) {
+                    winsCounter();
                     newGame();
                 }
             }
+            else {
+                if (chancesLeft > 0) {
+                    chancesLeft = chancesLeft - 1;
+                    document.getElementById("guesses-left").innerHTML = chancesLeft;
+    
+                }
+                else {
+                    // gameCanBegin = false;
+                    document.getElementById("initiateGame").innerHTML = "YOU LOSE!";
+                    lossesCounter();
+                    newGame();
+                }
+            }
+
+
+
         }
 
 
@@ -109,13 +118,16 @@ function hangmanGame(word) {
             else {
                 document.getElementById("initiateGame").innerHTML = "YOU LOSE!";
                 lossesCounter();
-                if (confirm("Do you want to play again?")) {
-                    prompt("It passed.");
-                    newGame();
-                }
+                newGame();
             }
         
         }
+    }
+}
+
+function checkIfComplete(array1, array2) {
+    if(array1.toString() === array2.toString()) {
+        return true;
     }
 }
 
@@ -144,8 +156,9 @@ function newGame() {
     var monopoly = ['m', 'o', 'n', 'o', 'p', 'o', 'l', 'y'];
     var jenga = ['j', 'e', 'n', 'g', 'a'];
     var avalon = ['a','v','a','l','o','n'];
-    var possWords = [jenga, avalon, monopoly];
-    var j = Math.floor(Math.random() * 3);
+    var battleship = ['b','a','t','t','l','e','s','h','i','p'];
+    var possWords = [jenga, avalon, monopoly, battleship];
+    var j = Math.floor(Math.random() * 4);
     
     hangmanGame(possWords[j]);
     // changeHeaderDes.textContent = "Begin!";
