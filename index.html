@@ -9,6 +9,10 @@
   <meta charset="UTF-8">
   <title>Coding Boot Camp - Word Guess</title>
 
+  <!-- Reset css -->
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <!-- Styling css -->
+  <link rel="stylesheet" href="assets/css/style.css">
   <!-- Bootstrap is used to make game look nicer -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
@@ -21,15 +25,16 @@
     <!-- Jumbotron holds the title section -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Coding Boot Camp - Word Guess</h1>
-        <h2>Guess the name of a Boardgame!</h2>
+        <h1 id="header">Coding Boot Camp - Word Guess</h1>
+        <h2 id="header2">Guess the name of a Boardgame!</h2>
         <button type="button" id="initiateGame" onclick="newGame()">Click me to begin!</button>
       </div>
     </div>
 
     <!-- Game counters all held here. cards are being used to hold various sections. -->
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
 
         <!-- First card: Holds the Word to Guess (blanks and guessed word) -->
         <div class="card">
@@ -49,7 +54,7 @@
 
             <!-- This span section called userGuesses is where we will be dumping the wrong guesses.
 						Pay particular attention to the id called ****userGuesses***. We'll be referencing this in the JavaScript. -->
-            <strong>Wrong Guesses: </strong> <span id="wrong-guesses"></span>
+            <strong id="wrongGuess">Wrong Guesses: </strong> <span id="wrong-guesses"></span>
           </div>
         </div>
 
@@ -83,6 +88,7 @@
           </div>
         </div>
       </div>
+      <div class="col-lg-1"></div>
     </div>
   </div>
 

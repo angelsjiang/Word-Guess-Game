@@ -61,10 +61,8 @@ function hangmanGame(word) {
 
             if(checkIfComplete(currGuess,currCorrAns)) {
                 
-                document.onkeyup = function(key) {
-                    winsCounter();
-                    newGame();
-                }
+                winsCounter();
+                newGame();
             }
             else {
                 if (chancesLeft > 0) {
@@ -157,8 +155,10 @@ function newGame() {
     var jenga = ['j', 'e', 'n', 'g', 'a'];
     var avalon = ['a','v','a','l','o','n'];
     var battleship = ['b','a','t','t','l','e','s','h','i','p'];
-    var possWords = [jenga, avalon, monopoly, battleship];
-    var j = Math.floor(Math.random() * 4);
+    var scrabble = ['s','c','r','a','b','b','l','e'];
+    var catan = ['c','a','t','a','n'];
+    var possWords = [jenga, avalon, monopoly, battleship, scrabble, catan];
+    var j = Math.floor(Math.random() * 6);
     
     hangmanGame(possWords[j]);
     // changeHeaderDes.textContent = "Begin!";
